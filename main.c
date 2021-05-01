@@ -59,7 +59,7 @@ int main(void) {
 	//Now, let's forever toggle this LED back and forth
 	while (true){
 		gpio_toggle(GPIOB, GPIO12);
-		delay(1000);
+		delay(100);
 	}
 	
 	return 0;
