@@ -18,8 +18,7 @@ DEFS		+= -DSTM32F1
 FP_FLAGS	?= -msoft-float
 ARCH_FLAGS	= -mthumb -mcpu=cortex-m3 $(FP_FLAGS)
 
-# Where our Black Magic Probe is attached
-BMP_PORT = /dev/ttyACM0
+FLASH_SIZE_KB = 64
 
 ## Boilerplate
 
@@ -127,7 +126,7 @@ GENERATED_BINARIES=$(BINARY).elf $(BINARY).bin $(BINARY).hex $(BINARY).srec $(BI
 '
 
 %.flash: %.bin
-	st-flash --flash=64k write $(BINARY).bin 0x8000000
+	st-flash --flash=$(FLASH_SIZE_KB)k write $(BINARY).bin 0x8000000
 
 clean:
 	$(RM) $(GENERATED_BINARIES) generated.* $(OBJS) $(OBJS:%.o=%.d)
